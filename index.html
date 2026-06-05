@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniData | Multi-Domain Business Analytics Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js CDN for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons for clean aesthetic vector iconography -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">Ω</div>
+        <span class="brand-name">OmniData</span>
+      </div>
+      
+      <ul class="sidebar-menu">
+        <li class="menu-item active" data-module="executive">
+          <a class="menu-link">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="menu-label">Executive Suite</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="retail">
+          <a class="menu-link">
+            <i data-lucide="shopping-bag"></i>
+            <span class="menu-label">Retail & Sales</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="customer">
+          <a class="menu-link">
+            <i data-lucide="users"></i>
+            <span class="menu-label">Customer Lifecycle</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="marketing">
+          <a class="menu-link">
+            <i data-lucide="megaphone"></i>
+            <span class="menu-label">Marketing ROI</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="finance">
+          <a class="menu-link">
+            <i data-lucide="trending-up"></i>
+            <span class="menu-label">Finance & Forecasts</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="operations">
+          <a class="menu-link">
+            <i data-lucide="truck"></i>
+            <span class="menu-label">Ops & Supply Chain</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="scenario">
+          <a class="menu-link" style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 8px; padding-top: 14px;">
+            <i data-lucide="sliders" style="color: var(--purple);"></i>
+            <span class="menu-label" style="color: var(--purple); font-weight:600;">Scenario Simulator</span>
+          </a>
+        </li>
+        <li class="menu-item" data-module="dataQuality">
+          <a class="menu-link">
+            <i data-lucide="shield-check" style="color: var(--success);"></i>
+            <span class="menu-label" style="color: var(--success); font-weight:600;">Data Quality Desk</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Sidebar footer with simulated session info -->
+      <div class="sidebar-footer" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 12px; width: 100%;">
+          <div class="user-avatar">AD</div>
+          <div class="user-details">
+            <span class="user-name">Alex Danvers</span>
+            <span class="user-role">Lead Decision Scientist</span>
+          </div>
+        </div>
+        <a href="mailto:alex.danvers@omnidata.io" class="menu-link" style="padding: 4px 8px; font-size: 11px; margin-top: 4px; width: 100%; justify-content: flex-start; gap: 8px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-muted); border-radius: 6px;">
+          <i data-lucide="mail" style="width: 13px; height: 13px; color: var(--warning);"></i>
+          <span class="menu-label" style="font-size: 11px;">Contact Developer</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Workspace -->
+    <main class="main-content">
+      <!-- Top Bar / Page Header -->
+      <header class="header-container">
+        <div class="page-title-area">
+          <h1 class="page-title" id="page-title">Executive Suite</h1>
+          <span class="page-subtitle" id="page-subtitle">Real-time company-wide KPIs and intelligence-guided strategies.</span>
+        </div>
+        
+        <div class="header-actions">
+          <div class="control-pill">
+            <i data-lucide="refresh-cw" style="width: 13px; height: 13px;"></i>
+            Status: <span>Live System</span>
+          </div>
+          <button class="btn btn-secondary" id="toggle-sidebar-btn">
+            <i data-lucide="menu"></i>
+            <span>Collapse</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Real-time Strategy Ticker -->
+      <div class="ticker-wrap animate-fade-in" id="strategy-ticker-wrap">
+        <div class="ticker-title">
+          <i data-lucide="bell" style="width: 12px; height: 12px;"></i>
+          <span>STRATEGY</span>
+        </div>
+        <div class="ticker">
+          <div class="ticker__item" id="strategy-ticker-text">System initialized. Pricing markups are active at 1.30x. Marketing channels are operating at optimal baseline ROI.</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Inject Target for Dashboard Sections -->
+      <section id="module-container" class="animate-fade-in">
+        <!-- Dashboard components will be injected here dynamically by app.js -->
+      </section>
+    </main>
+    
+    <!-- Contact Developer Modal Dialog Overlay -->
+    <div class="modal-overlay" id="contact-modal">
+      <div class="modal-content animate-fade-in">
+        <div class="modal-header">
+          <h3 class="modal-title" style="font-family:'Outfit'; font-size:16px;"><i data-lucide="mail" style="color:var(--warning); display:inline-block; vertical-align:middle; margin-right:6px;"></i> Contact Developer</h3>
+          <button class="modal-close" id="close-modal-btn">&times;</button>
+        </div>
+        <form id="contact-form">
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:14px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <label style="font-size:12px; color:var(--text-muted); font-weight:600;">Your Email Address</label>
+              <input type="email" class="ai-input" id="contact-email" placeholder="name@company.com" required style="width:100%;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <label style="font-size:12px; color:var(--text-muted); font-weight:600;">Subject</label>
+              <input type="text" class="ai-input" id="contact-subject" placeholder="Feedback on OmniData..." required style="width:100%;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <label style="font-size:12px; color:var(--text-muted); font-weight:600;">Message</label>
+              <textarea class="ai-input" id="contact-message" placeholder="Write your message here..." required style="width:100%; height:120px; resize:none; font-family:inherit;"></textarea>
+            </div>
+            <div id="contact-status" style="display:none; padding:8px 12px; border-radius:6px; font-size:12px; align-items:center; gap:8px;"></div>
+            <button type="submit" class="btn" style="background:var(--warning); box-shadow: 0 4px 12px var(--warning-glow); margin-top:8px; justify-content:center;">
+              <i data-lucide="send" style="width:14px; height:14px;"></i> Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry Script Orchestrator -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
